@@ -8,7 +8,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         alias ls='exa'
     else
         alias ls='ls -G'
-    end
+    fi
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias ls='ls --color=auto'
 fi
