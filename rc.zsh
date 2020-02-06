@@ -17,7 +17,6 @@ done
 zgen load romkatv/powerlevel10k powerlevel10k.zsh-theme
 
 # Nice-to-have
-zgen oh-my-zsh plugins/osx
 zgen oh-my-zsh plugins/git
 zgen oh-my-zsh plugins/vscode
 zgen oh-my-zsh plugins/gitignore
