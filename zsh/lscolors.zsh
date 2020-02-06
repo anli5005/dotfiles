@@ -1,5 +1,5 @@
 if type "dircolors" > /dev/null; then
-    dircolors
+    eval "$(dircolors -b)"
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
