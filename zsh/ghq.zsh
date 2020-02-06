@@ -1,4 +1,4 @@
-if ! type ghq > /dev/null; then
+if type ghq > /dev/null; then
 hash -d ghq=$(ghq root)
 
 ghq() {
