@@ -1,1 +1,3 @@
-eval "`fnm env --multi`"
+if ! type "fnm" > /dev/null; then
+    eval "`fnm env --multi`"
+fi

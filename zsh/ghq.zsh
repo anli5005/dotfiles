@@ -1,3 +1,4 @@
+if ! type ghq > /dev/null; then
 hash -d ghq=$(ghq root)
 
 ghq() {
@@ -20,3 +21,4 @@ ghq() {
 
 alias ghd='ghq go'
 alias ghp='ghq pushd'
+fi
