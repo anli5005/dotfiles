@@ -1,0 +1,14 @@
+#! /bin/sh
+
+set -e
+
+COMPILED_FILE="/tmp/cx-$(LC_CTYPE=C tr -dc A-Za-z0-9 < /dev/urandom | head -c 32 | xargs).out"
+
+echo "Compiling $1 to $COMPILED_FILE..."
+cc -o $COMPILED_FILE $1
+echo ""
+echo "Running $COMPILED_FILE..."
+echo ""
+
+$COMPILED_FILE
+
