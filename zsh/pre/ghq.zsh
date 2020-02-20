@@ -1,5 +1,7 @@
 if type ghq > /dev/null; then
-hash -d ghq=$(ghq root)
+GHQ_ROOT=$(ghq root)
+hash -d ghq="$GHQ_ROOT"
+hash -d hub="$GHQ_ROOT/github.com"
 
 ghq() {
     if [[ "$1" == "path" ]] then
