@@ -24,9 +24,10 @@ for file in $DOTFILES_ROOT/dotfiles/zsh/*.zsh; do
     zgen load "$file"
 done
 
+zgen load romkatv/zsh-defer
+zgen load Tarrasch/zsh-autoenv
 zgen oh-my-zsh plugins/git
 zgen oh-my-zsh plugins/vscode
 zgen oh-my-zsh plugins/gitignore
 zgen oh-my-zsh plugins/osx
-zgen load Tarrasch/zsh-autoenv
 zgen load zsh-users/zsh-syntax-highlighting
