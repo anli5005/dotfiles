@@ -36,7 +36,7 @@ CAPABILITY            38;5;17
 CHR                   38;5;113;1
 DIR                   1;34
 DOOR                  38;5;127
-EXEC                  38;5;208;1
+EXEC                  32;1
 FIFO                  38;5;126
 FILE                  0
 LINK                  1;36
