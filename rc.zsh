@@ -1,8 +1,11 @@
 autoload -Uz compinit
 compinit
 
+DOTFILES_ROOT=$HOME
+DOTFILES_DIR=$0:a:h
+
 # load zgen
-source "$DOTFILES_ROOT/.zgen/zgen.zsh"
+source "$HOME/.zgen/zgen.zsh"
 
 # oh-my-zsh defaults
 zgen oh-my-zsh lib/compfix.zsh
@@ -12,7 +15,7 @@ zgen oh-my-zsh lib/history.zsh
 zgen oh-my-zsh lib/grep.zsh
 
 # dotfiles/zsh
-for file in $DOTFILES_ROOT/dotfiles/zsh/pre/*.zsh; do
+for file in $DOTFILES_DIR/zsh/pre/*.zsh; do
     zgen load "$file"
 done
 
@@ -20,7 +23,7 @@ done
 zgen load romkatv/powerlevel10k powerlevel10k.zsh-theme
 
 # Nice-to-have
-for file in $DOTFILES_ROOT/dotfiles/zsh/*.zsh; do
+for file in $DOTFILES_DIR/zsh/*.zsh; do
     zgen load "$file"
 done
 

@@ -1,5 +1,7 @@
 if type "dircolors" > /dev/null; then
-    eval "$(dircolors -b)"
+    eval "$(dircolors -b $DOTFILES_DIR/LS_COLORS)"
+elif type "gdircolors" > /dev/null; then
+    eval "$(gdircolors -b $DOTFILES_DIR/LS_COLORS)"
 fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
