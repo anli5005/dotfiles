@@ -1,5 +1,5 @@
 if type ghq > /dev/null; then
-GHQ_ROOT=$(ghq root)
+    GHQ_ROOT=${GHQ_ROOT:-$(ghq root)}
 hash -d ghq="$GHQ_ROOT"
 hash -d hub="$GHQ_ROOT/github.com"
 
@@ -16,6 +16,11 @@ ghq() {
         if [[ -n $GHQ_PATH_RESULT ]] then
             pushd $GHQ_PATH_RESULT
         fi
+    elif [[ "$1" == "code" ]] then
+        GHQ_PATH_RESULT=$(ghq path "$2")
+        if [[ -n $GHQ_PATH_RESULT ]] then
+            code $GHQ_PATH_RESULT
+        fi
     else
         command ghq $@
     fi
@@ -23,4 +28,5 @@ ghq() {
 
 alias ghd='ghq go'
 alias ghp='ghq pushd'
+alias ghv='ghq code'
 fi
