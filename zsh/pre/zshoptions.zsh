@@ -27,7 +27,7 @@ typeset -g POWERLEVEL9K_MODE=nerdfont-complete
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir package vcs vi_mode newline prompt_char)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(todo node_version go_version jenv luaenv rust_version anaconda virtualenv gcloud status command_execution_time root_indicator background_jobs battery)
 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR='•'
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR='—'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND=240
 POWERLEVEL9K_LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL=' '
 POWERLEVEL9K_RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL=' '

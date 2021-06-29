@@ -6,7 +6,7 @@ alias oops="sudo !!"
 alias next='npx next'
 alias ql='quick-look'
 alias kj='kill %'
-alias sl='sl || kill %'
+alias sl='sl -e'
 
 hash -d doc="$DOTFILES_ROOT/Documents"
 hash -d down="$DOTFILES_ROOT/Downloads"
