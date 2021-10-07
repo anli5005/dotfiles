@@ -26,6 +26,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'keith/swift.vim'
 Plug 'joshdick/onedark.vim'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
