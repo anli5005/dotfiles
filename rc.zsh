@@ -32,5 +32,5 @@ zgen load Tarrasch/zsh-autoenv
 zgen oh-my-zsh plugins/git
 zgen oh-my-zsh plugins/vscode
 zgen oh-my-zsh plugins/gitignore
-zgen oh-my-zsh plugins/osx
+zgen oh-my-zsh plugins/macos
 zgen load zsh-users/zsh-syntax-highlighting
