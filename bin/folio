@@ -1,11 +1,38 @@
 #! /usr/bin/python3
-#  Vibe coded entirely by ChatGPT, even the name
+#  Vibe coded by ChatGPT, even the name
+
+#!/usr/bin/env python3
 
 import argparse
 import json
 import re
 import subprocess
 import sys
+
+
+def ensure_finderinfo(folder: str):
+    """
+    Ensure the com.apple.FinderInfo extended attribute exists.
+    If it does not, create it as an empty string.
+    """
+    try:
+        subprocess.run(
+            ["xattr", "-p", "com.apple.FinderInfo", folder],
+            check=True,
+            capture_output=True,
+        )
+        # Attribute exists, do nothing
+    except subprocess.CalledProcessError:
+        # Attribute missing, create as empty
+        try:
+            subprocess.run(
+                ["xattr", "-w", "-x", "com.apple.FinderInfo", ("0" * 16) + "04" + ("0" * 46), folder],
+                check=True,
+            )
+            print(f"ℹ️ Initialized empty com.apple.FinderInfo for '{folder}'")
+        except subprocess.CalledProcessError as e:
+            print(f"⚠️ Failed to initialize com.apple.FinderInfo: {e}", file=sys.stderr)
+
 
 def set_folder_icon(folder: str, descriptor: str, is_symbol: bool = None, is_emoji: bool = None):
     """
@@ -18,7 +45,7 @@ def set_folder_icon(folder: str, descriptor: str, is_symbol: bool = None, is_emo
         icon_data = {"emoji": descriptor}
     else:
         # Auto-detect with regex
-        if re.fullmatch(r"[a-z_\.]+", descriptor):
+        if re.fullmatch(r"[a-z0-9_\.]+", descriptor):
             icon_data = {"sym": descriptor}
         else:
             icon_data = {"emoji": descriptor}
@@ -30,6 +57,7 @@ def set_folder_icon(folder: str, descriptor: str, is_symbol: bool = None, is_emo
             ["xattr", "-w", "com.apple.icon.folder#S", json_str, folder],
             check=True
         )
+        ensure_finderinfo(folder)
         print(f"✅ Successfully set icon for '{folder}' to {json_str}")
     except subprocess.CalledProcessError as e:
         print(f"❌ Failed to set icon: {e}", file=sys.stderr)
@@ -57,7 +85,7 @@ def main():
     )
     parser.add_argument("folder", help="Path to the folder to customize")
     parser.add_argument("descriptor", nargs="?", help="Icon descriptor (symbol name or emoji)")
-    
+
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--symbol", action="store_true", help="Treat descriptor as a symbol name")
     group.add_argument("--emoji", action="store_true", help="Treat descriptor as an emoji")
@@ -76,3 +104,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
