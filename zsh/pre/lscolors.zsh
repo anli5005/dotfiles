@@ -6,7 +6,10 @@ fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export LSCOLORS="Exfxcxdxbxegedabagacad"
-    if type "exa" > /dev/null; then
+    if type "eza" > /dev/null; then
+        alias ls='eza'
+	export EZA_ICONS_AUTO=1
+    elif type "exa" > /dev/null; then
         alias ls='exa'
     else
         alias ls='ls -G'
